@@ -6,10 +6,13 @@ cd /d "C:\Users\mendo\OneDrive\Aaron Personal\SEM V\DL Practical"
 
 git add .
 
-git commit -m "Auto backup" 2>nul
+git diff --cached --quiet
 
-git push
+if errorlevel 1 (
+    git commit -m "Auto backup"
+    git push
+)
 
-timeout /t 300 >nul
+timeout /t 60 >nul
 
 goto loop
